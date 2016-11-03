@@ -15,23 +15,25 @@ import java.util.Scanner;
  * 3. 提交代码到分支下，创建pull request，与主仓库的master分支对比
  */
 public class DifferentFormat {
-	@SuppressWarnings("resource")
-	public static void main(String[] args){
-		Scanner scanner = new Scanner(System.in);
-		Locale locale = Locale.US; 
-		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", locale); //修改格式
-		while (scanner.hasNext()){
-			String line = scanner.nextLine();
-			Date lineDate = null;
-			long lineTimestamp;
-			try {
-				lineDate = inputFormat.parse(line);
-				lineTimestamp = lineDate.getTime();
-				System.out.println(lineTimestamp);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
+    @SuppressWarnings("resource")
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        //设置语言环境
+        Locale locale = Locale.US;
+        //用给定的模板和给定的语言环境的格式设置日期的输入格式
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss", locale); //修改格式
+        while (scanner.hasNext()){
+            String line = scanner.nextLine();
+            Date lineDate = null;
+            long lineTimestamp;
+            try {
+                lineDate = inputFormat.parse(line);
+                lineTimestamp = lineDate.getTime();
+                System.out.println(lineTimestamp);
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
 }
