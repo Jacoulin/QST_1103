@@ -14,23 +14,29 @@ import java.util.Scanner;
  * 3. 创建pull request，与主仓库的master分支对比
  */
 public class TimestampTransfer {
-	@SuppressWarnings("resource")
-	public static void main(String[] args){
-		Scanner scanner = new Scanner(System.in);
-		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		while (scanner.hasNext()){
-			String line = scanner.nextLine();
-			Date lineDate = null;
-			long lineTimestamp;
-			try {
-				lineDate = inputFormat.parse(line);
-				lineTimestamp = lineDate.getTime();
-				System.out.println(outputFormat.format(lineDate) + " to " + lineTimestamp);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
+    @SuppressWarnings("resource")
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        //设置输入日期格式
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //设置输出日期格式
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        while (scanner.hasNext()){
+            String line = scanner.nextLine();
+            Date lineDate = null;
+            //声明长整型类型的lineTimestamp，以存放日期转换后的时间戳
+            long lineTimestamp;
+            try {
+                //获得形如输入格式的日期
+                lineDate = inputFormat.parse(line);
+                //返回长整型的毫秒数，即转换后的时间戳
+                lineTimestamp = lineDate.getTime();
+                //改变日期格式为输出格式，并输出
+                System.out.println(outputFormat.format(lineDate) + " to " + lineTimestamp);
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
 }
